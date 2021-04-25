@@ -1,0 +1,24 @@
+.menu-platillos {
+    width: 100%;
+    height: 700px;
+    background-color: white;
+    border-top: 5px solid #102629;
+}
+
+.menu-platillos ul{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin-left: 15px;
+}
+
+.menu-platillos ul li {
+    list-style: none;
+    width: 30%;
+    height: 80%;
+}
+
+.menu-platillos ul li a{
+    margin-left: 15px;
+    display: block;
+}
