@@ -3,10 +3,10 @@ import '../assets/styles/components/Platillos.css'
 import Categories from '../components/Categories'
 import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
-import Spinner from '../components/General/Spinner'
-import Fatal from '../components/General/Fatal'
+import Spinner from './General/Spinner'
+import Fatal from './General/Fatal'
 
-class Platillos extends React.Component {
+class Platillo extends React.Component {
   componentDidMount () {
     //this.props.getPlatillosAction()
   }
@@ -39,4 +39,4 @@ class Platillos extends React.Component {
 }
 
 
-export default Platillos
+export default Platillo
