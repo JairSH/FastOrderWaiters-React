@@ -1,8 +1,11 @@
 import React from 'react'
-import Categories from '../components/categories'
-import Carousel from '../components/carousel'
-import CarouselItem from '../components/carouselItems'
-import '../assets/styles/App.scss'
+import Categories from '../components/Categories'
+import Carousel from '../components/Carousel'
+import CarouselItem from '../components/CarouselItem'
+import Platillos from '../components/Platillo'
+import Drink from '../components/Drink'
+import Dessert from '../components/Dessert'
+import Order from '../components/Order'
 
 class Menu extends React.Component {
   componentDidMount () {
@@ -38,30 +41,13 @@ class Menu extends React.Component {
   render () {
     return (
       <>
-        {this.props.myList.length > 0 &&
-          <Categories title='Mi Orden'>
-            <Carousel>
-              { this.props.myList.map(item =>
-                <CarouselItem key={item.id} {...item} isList />
-                )}
-              <button onClick={this.handleSaveList} >Guardar</button>
-              <button onClick={this.handleCleanList}>Limpiar lista</button>
-            </Carousel>
-          </Categories>}
-        <Categories title='Bebidas'>
-          <Carousel>
-            {this.props.bebidas.map(item =>
-              <CarouselItem key={item.id} {...item} category="bebida" />
-            )}
-          </Carousel>
-        </Categories>
-        <Categories title='Postres'>
-          <Carousel>
-            {this.props.postres.map(item =>
-              <CarouselItem key={item.id} {...item} category="postre" />
-            )}
-          </Carousel>
-        </Categories>
+        <Order/>
+        
+        <Platillos/>
+
+        <Drink/>
+
+        <Dessert/>
       </>
     )
   }

@@ -60,7 +60,7 @@ const Header = props => {
                 <a>POSTRES</a>
               </li>
             </Link>
-            <Link to='/orden/'>
+            <Link to='/menu/'>
               <li>
                 <a>CREAR ORDEN</a>
               </li>
