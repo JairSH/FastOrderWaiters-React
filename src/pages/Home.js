@@ -11,7 +11,7 @@ class Home extends React.Component {
           <img src={mainFondo} alt='fondo' />
         </section>
         <section className='text-main'>
-          <p>Bienvenidos <br /> FAST FOOD</p>
+          <p>Welcome <br /> FAST FOOD</p>
         </section>
         <section className='main-buttons'>
           <div>

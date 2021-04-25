@@ -27,13 +27,12 @@ main .text-main{
 }   
 
 main .text-main p{
-    color: white;
+    color: #000001;
     font-size: 85px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight:900;
     position: absolute;
-    background-color: #102629;
-    border: solid 15px white;
+    
 }
 
 main .main-buttons{
