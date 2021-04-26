@@ -18,9 +18,7 @@ const Header = props => {
       <div className='header-menu-nav'>
         <div className='icon_fast'>
           <Link to='/'>
-            <li>
-              <a>FAST FOOD</a>
-            </li>
+            FAST FOOD
           </Link>
         </div>
         <nav className='header__menu'>
@@ -46,24 +44,16 @@ const Header = props => {
         <div>
           <ul>
             <Link to='/platillos/'>
-              <li>
-                <a>PLATILLOS</a>
-              </li>
+              PLATILLOS
             </Link>
             <Link to='/bebidas/'>
-              <li>
-                <a>BEBIDAS</a>
-              </li>
+              BEBIDAS
             </Link>
             <Link to='/postres/'>
-              <li>
-                <a>POSTRES</a>
-              </li>
+              POSTRES
             </Link>
             <Link to='/menu/'>
-              <li>
-                <a>CREAR ORDEN</a>
-              </li>
+              CREAR ORDEN
             </Link>
           </ul>
         </div>

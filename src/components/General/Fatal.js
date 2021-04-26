@@ -3,7 +3,7 @@ import React from 'react'
 const Fatal = (props) => {
   return (
     <h2 className='center rojo'>
-      error
+      404: error
     </h2>
   )
 }

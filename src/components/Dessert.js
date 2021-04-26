@@ -24,15 +24,14 @@ class Dessert extends React.Component {
     this.setState({ loading:true, error: null })
     
     try {
-      const response = await axios.get('http://localhost:8000/postres')
-      const data = await response.json()
-      this.setState({ loading: false, data: data.results})
+      const response = await axios.get('http://localhost:8000/postres/')
+      this.setState({ loading: false, data: response.data})
     } catch (error) {
       this.setState({ loading: false, error: error })
     }
   }
   render () {
-    if (this.state.loading){
+    if (this.state.loading === true){
       return <Spinner />
     }
     

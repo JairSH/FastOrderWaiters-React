@@ -1,13 +1,11 @@
-import React from 'react'
-// import Carousel from './Carousel'
-// import Categories from './Categories'
-// import CarouselItem from './CarouselItem'
+/* import React from 'react'
+import Carousel from './Carousel'
+import Categories from './Categories'
+import CarouselItem from './CarouselItem'
 
 class Order extends React.Component {
   render () {
     return (
-      <h1>Order</h1>
-      /*
       <>
         {this.props.myList.length > 0 &&
           <Categories title='Mi Orden'>
@@ -20,9 +18,8 @@ class Order extends React.Component {
             </Carousel>
           </Categories>}
       </>
-      */
     )
   }
 }
-
 export default Order
+*/

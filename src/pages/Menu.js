@@ -1,11 +1,8 @@
 import React from 'react'
-import Categories from '../components/Categories'
-import Carousel from '../components/Carousel'
-import CarouselItem from '../components/CarouselItem'
 import Platillos from '../components/Platillo'
 import Drink from '../components/Drink'
 import Dessert from '../components/Dessert'
-import Order from '../components/Order'
+// import Order from '../components/Order'
 
 class Menu extends React.Component {
   componentDidMount () {
@@ -40,8 +37,8 @@ class Menu extends React.Component {
 
   render () {
     return (
+        // <Order/>
       <>
-        <Order/>
         
         <Platillos/>
 

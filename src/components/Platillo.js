@@ -12,10 +12,9 @@ class Platillo extends React.Component {
     loading: true,
     error: null,
     data:{
-      results:[]
-    }
+      results: []
+    },
   }
-
 
   componentDidMount () {
     this.fetchData()
@@ -25,36 +24,32 @@ class Platillo extends React.Component {
     this.setState({ loading:true, error: null })
     
     try {
-      const response = await axios.get('http://localhost:8000/platillos')
-      const data = await response.json()
-      this.setState({ loading: false, data: data.results})
+      const response = await axios.get('http://localhost:8000/platillos/') 
+      this.setState({ loading: false, data: response.data})
     } catch (error) {
       this.setState({ loading: false, error: error })
     }
   }
-  
-  render () {
-    if (this.state.loading){
-      return <Spinner />
-    }
-    
-    if (this.state.error){
-      return <Fatal />
-    }
 
-    return (
+  render(){
+    console.log(this.state.data.results);
+    return(
       <>
-        <Categories title='Platillos'>
-          <Carousel>
-            {this.state.data.results.map(item =>
-              <CarouselItem key={item.id} {...item} category="platillo" />
-            )}
-          </Carousel>
-        </Categories>
+        <div>
+          <h1>Platillos</h1>
+          <ul>
+            { 
+            this.state.data.results.map(item => (
+                <li key={item.id}>
+                    {item.name}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </>
     )
-  }
+  }  
 }
-
 
 export default Platillo
