@@ -39,14 +39,14 @@ class Platillo extends React.Component {
     }
     
     if (this.state.error){
-      return <Fatal mensaje={this.props.error} />
+      return <Fatal />
     }
 
     return (
       <>
         <Categories title='Platillos'>
           <Carousel>
-            {this.props.platillos.map(item =>
+            {this.state.data.results.map(item =>
               <CarouselItem key={item.id} {...item} category="platillo" />
             )}
           </Carousel>

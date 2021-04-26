@@ -6,7 +6,7 @@ import React from 'react'
 class Order extends React.Component {
   render () {
     return (
-      <h1>H</h1>
+      <h1>Order</h1>
       /*
       <>
         {this.props.myList.length > 0 &&
