@@ -33,15 +33,15 @@ class Register extends React.Component {
     e.preventDefault()
     this.setState({ loading: true, error: null })
     console.log(this.state.form);
-    
-    axios.post('http://localhost:8000/users/singup/', {
-      form: this.state.form
-    })
-    .then((response) => {
-      console.log(response);
-    }, (error) => {
-      console.log(error);
-    });
+   
+    try {
+      const response = await axios.post('http://localhost:8000/users/singup/', this.state.form) 
+      console.log(response)
+      this.setState({ loading: false })
+      this.props.history.push('/')
+    } catch (error) {
+      this.setState({ loading: false, error: error })
+    }
   }
   render () {
     if (this.state.loading === true ){
