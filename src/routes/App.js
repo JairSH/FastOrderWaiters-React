@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Layout from '../components/Layout'
+import Register from '../components/Register'
 import Home from '../pages/Home'
 import Menu from '../pages/Menu'
 import NotFound from '../pages/NotFound'
@@ -12,6 +13,7 @@ function App () {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/menu' component={Menu} />
+          <Route exact path='/register' component={Register} />
           <Route component={NotFound} />
         </Switch>
       </Layout>

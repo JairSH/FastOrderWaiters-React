@@ -32,7 +32,14 @@ class Platillo extends React.Component {
   }
 
   render(){
-    console.log(this.state.data.results);
+    if (this.state.loading === true){
+      return <Spinner />
+    }
+    
+    if (this.state.error){
+      return <Fatal mensaje={this.props.error} />
+    }
+    
     return(
       <>
         <div>

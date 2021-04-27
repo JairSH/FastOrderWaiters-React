@@ -43,8 +43,8 @@ const Header = props => {
       <section className='section-menu-header'>
         <div>
           <ul>
-            <Link to='/platillos/'>
-              PLATILLOS
+            <Link to='/register/'>
+              Register
             </Link>
             <Link to='/bebidas/'>
               BEBIDAS
