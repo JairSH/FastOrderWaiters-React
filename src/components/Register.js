@@ -38,7 +38,7 @@ class Register extends React.Component {
       const response = await axios.post('http://localhost:8000/users/singup/', this.state.form) 
       console.log(response)
       this.setState({ loading: false })
-      this.props.history.push('/')
+      this.props.history.push('/login')
     } catch (error) {
       this.setState({ loading: false, error: error })
     }

@@ -43,15 +43,6 @@ const Header = props => {
       <section className='section-menu-header'>
         <div>
           <ul>
-            <Link to='/register/'>
-              Register
-            </Link>
-            <Link to='/bebidas/'>
-              BEBIDAS
-            </Link>
-            <Link to='/postres/'>
-              POSTRES
-            </Link>
             <Link to='/menu/'>
               CREAR ORDEN
             </Link>
