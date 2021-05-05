@@ -10,6 +10,8 @@ import {
   MensajeError
 } from '../elementos/Formularios'
 import Input from '../components/Input'
+import Spinner from '../components/General/Spinner'
+import Fatal from '../components/General/Fatal'
 
 const Register = () => {
   const [usuario, cambiarUsuario] = useState({ campo: '', valido: null })
@@ -20,6 +22,7 @@ const Register = () => {
   const [correo, cambiarCorreo] = useState({ campo: '', valido: null })
   const [telefono, cambiarTelefono] = useState({ campo: '', valido: null })
   const [formularioValido, cambiarFormularioValido] = useState(null)
+  const [data, cambiarData] = useState({ loading: false, error: null })
 
   const expresiones = {
     usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -55,18 +58,23 @@ const Register = () => {
       correo.valido === 'true' &&
       telefono.valido === 'true'
     ) {
+      cambiarData({ loading: true, error: null })
       cambiarFormularioValido(true)
-
-      const response = await axios.post('http://localhost:8000/users/singup/', {
-        email: correo.campo,
-        username: usuario.campo,
-        phone_number: telefono.campo,
-        password: password.campo,
-        password_confirmation: password2.campo,
-        first_name: nombre.campo,
-        last_name: apellido.campo
-      })
-      console.log(response)
+      try {
+        const response = await axios.post('http://localhost:8000/users/singup/', {
+          email: correo.campo,
+          username: usuario.campo,
+          phone_number: telefono.campo,
+          password: password.campo,
+          password_confirmation: password2.campo,
+          first_name: nombre.campo,
+          last_name: apellido.campo
+        })
+        console.log(response)
+        cambiarData({ loading: false })
+      } catch (error) {
+        cambiarData({ loading: false, error: error })
+      }
       // this.props.history.push('/verifyToken')
       cambiarUsuario({ campo: '', valido: null })
       cambiarNombre({ campo: '', valido: null })
@@ -94,13 +102,14 @@ const Register = () => {
   }
   /*
   render () {
-    if (this.state.loading === true ){
-        return <Spinner />
-      }
+  */
+  if (data.loading === true) {
+    return <Spinner />
+  }
 
-      if (this.state.error){
-        return <Fatal mensaje={this.props.error}/>
-      } */
+  if (data.error) {
+    return <Fatal />
+  }
   return (
     <main>
       <Formulario action='' onSubmit={onSubmit}>
