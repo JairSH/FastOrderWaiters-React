@@ -3,15 +3,15 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
 import {
-  Formulario,
-  ContenedorBotonCentrado,
   Boton,
+  ContenedorBotonCentrado,
+  Formulario,
   MensajeExito,
   MensajeError
 } from '../elementos/Formularios'
 import Input from '../components/Input'
-import Spinner from '../components/General/Spinner'
 import Fatal from '../components/General/Fatal'
+import Spinner from '../components/General/Spinner'
 
 const Register = () => {
   const [usuario, cambiarUsuario] = useState({ campo: '', valido: null })
@@ -111,7 +111,7 @@ const Register = () => {
     return <Fatal />
   }
   return (
-    <main>
+    <main className='Formulario'>
       <Formulario action='' onSubmit={onSubmit}>
         <Input
           estado={usuario}

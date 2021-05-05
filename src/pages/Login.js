@@ -1,53 +1,104 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import '../assets/styles/components/Login.css'
-import googleIcon from '../assets/statics/google-icon.png'
-import twitterIcon from '../assets/statics/twitter-icon.png'
-import Spinner from '../components/General/Spinner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import {
+  Boton,
+  ContenedorBotonCentrado,
+  Formulario,
+  MensajeError,
+  MensajeExito
+} from '../elementos/FormularioLogin'
+import InputLogin from '../components/InputLogin'
 import Fatal from '../components/General/Fatal'
+import Spinner from '../components/General/Spinner'
 
-class Login extends React.Component {
-  state = {
-    loading: false,
-    error: null,
-    form: {
-      email: '',
-      password: ''
-    }
+const Login = () => {
+  const [password, cambiarPassword] = useState({ campo: '', valido: null })
+  const [correo, cambiarCorreo] = useState({ campo: '', valido: null })
+  const [formularioValido, cambiarFormularioValido] = useState(null)
+  const [data, cambiarData] = useState({ loading: false, error: null })
+
+  const expresiones = {
+    usuario: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+    password: /^.{4,12}$/, // 4 a 12 digitos.
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    telefono: /^\d{7,14}$/ // 7 a 14 numeros.
   }
 
-  handleInput = e => {
-    this.setState({
-        form: {
-            ...this.state.form,
-            [e.target.name]: e.target.value
-        }
-    })
-  }
-
-  handleSubmit = async e => {
+  const onSubmit = async e => {
     e.preventDefault()
-    this.setState({ loading: true, error: null })
-    console.log(this.state.form)
-    try {
-      const response = await axios.post('http://localhost:8000/users/login/', this.state.form)
-      console.log(response);
-      this.setState({ loading: false })
-      this.props.history.push('/')
-    } catch (error) {
-      this.setState({ loading: false, error: error })
+    if (
+      correo.valido === 'true' &&
+      password.valido === 'true'
+    ) {
+      cambiarData({ loading: true, error: null })
+      cambiarFormularioValido(true)
+      try {
+        const response = await axios.post('http://localhost:8000/users/login/', {
+          email: correo.campo,
+          password: password.campo
+        })
+        console.log(response)
+        cambiarData({ loading: false })
+      } catch (error) {
+        cambiarData({ loading: false, error: error })
+      }
+
+      cambiarPassword({ campo: '', valido: null })
+      cambiarCorreo({ campo: '', valido: null })
+    } else {
+      cambiarFormularioValido(false)
     }
   }
-  render (){
-    if (this.state.loading === true ){
-        return <Spinner />
-      }
-      
-      if (this.state.error){
-        return <Fatal mensaje={this.props.error}/>
-      }
-    return (
+
+  if (data.loading === true) {
+    return <Spinner />
+  }
+
+  if (data.error) {
+    return <Fatal />
+  }
+
+  return (
+    <main>
+      <Formulario action='' onSubmit={onSubmit}>
+        <InputLogin
+          estado={correo}
+          cambiarEstado={cambiarCorreo}
+          type='email'
+          label='Correo'
+          placeholder='correo'
+          name='email'
+          leyendaError='El correo puede contener letras,numeros, puntos, guiones y guiones bajos'
+          expresionRegular={expresiones.correo}
+        />
+        <InputLogin
+          estado={password}
+          cambiarEstado={cambiarPassword}
+          type='password'
+          label='Contraseña'
+          placeholder='Contraseña'
+          name='password'
+          leyendaError='La contraseña debe tener de 4 a 12 digitos'
+          expresionRegular={expresiones.password}
+        />
+        {formularioValido === false &&
+          <MensajeError>
+            <p>
+              <FontAwesomeIcon icon={faExclamationTriangle} />
+              <b>Error:</b> Por favor rellena el formulario correctamente.
+            </p>
+          </MensajeError>}
+        <ContenedorBotonCentrado>
+          <Boton type='submit'>Enviar</Boton>
+          {formularioValido === true && <MensajeExito>Formulario enviado exitosamente!</MensajeExito>}
+        </ContenedorBotonCentrado>
+      </Formulario>
+    </main>
+    /*
     <section className='login'>
         <section className='login__container'>
         <h2>Inicia sesión</h2>
@@ -86,9 +137,8 @@ class Login extends React.Component {
 
         </section>
     </section>
-    )
-
-  }
+    */
+  )
 }
 
 export default Login

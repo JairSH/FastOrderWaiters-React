@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -8,8 +10,8 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    font-family:sans-serif;
-    background: #102629;
+    background: #e5e5e5;
+	font-family: 'Roboto', sans-serif;
   }
   
   .center{
@@ -24,3 +26,9 @@
       color: red;
   }
 
+  .Formulario {
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: 40px;
+  }
