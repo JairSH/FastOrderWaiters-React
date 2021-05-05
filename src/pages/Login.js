@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import '../assets/styles/components/Login.css'
 import googleIcon from '../assets/statics/google-icon.png'
 import twitterIcon from '../assets/statics/twitter-icon.png'
-import Spinner from './General/Spinner'
-import Fatal from './General/Fatal'
+import Spinner from '../components/General/Spinner'
+import Fatal from '../components/General/Fatal'
 
 class Login extends React.Component {
   state = {
